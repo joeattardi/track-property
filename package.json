@@ -1,7 +1,7 @@
 {
   "name": "track-property",
   "version": "1.0.0",
-  "description": "",
+  "description": "Track the history of sets and gets of properties",
   "main": "src/index.js",
   "scripts": {
     "test": "mocha src/**/*.spec.js",
