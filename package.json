@@ -9,7 +9,11 @@
     "lint": "eslint src",
     "prettify": "prettier --write src/**/*.js"
   },
-  "author": "Joe Attardi",
+  "author": {
+    "name": "Joe Attardi",
+    "email": "joe@attardi.net",
+    "url": "https://thinksincode.com"
+  },
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.2.0",
@@ -17,5 +21,9 @@
     "eslint-plugin-prettier": "^3.0.0",
     "mocha": "^5.2.0",
     "prettier": "^1.15.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeattardi/track-property.git"
   }
 }
