@@ -1,8 +1,15 @@
 {
   "name": "track-property",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Track the history of sets and gets of properties",
-  "keywords": ["property", "properties", "set", "get", "track", "log"],
+  "keywords": [
+    "property",
+    "properties",
+    "set",
+    "get",
+    "track",
+    "log"
+  ],
   "main": "src/index.js",
   "scripts": {
     "test": "mocha src/**/*.spec.js",
@@ -21,7 +28,8 @@
     "eslint": "^5.9.0",
     "eslint-plugin-prettier": "^3.0.0",
     "mocha": "^5.2.0",
-    "prettier": "^1.15.3"
+    "prettier": "^1.15.3",
+    "sinon": "^7.1.1"
   },
   "repository": {
     "type": "git",

@@ -67,3 +67,16 @@ In the above example, the `history` array will contain just one entry:
   }
 ]
 ```
+
+## Callback function
+
+In addition to keeping a list of the set/get history, you can also define a callback function that will get called whenever there is a set or get operation:
+
+```javascript
+const trackProperty = require('track-property');
+
+const myObject = {};
+trackProperty(myObject, 'name', ['set', 'get'], record => {
+  console.log(`New ${record.type} operation on obj:`, record);
+});
+```

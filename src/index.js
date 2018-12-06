@@ -1,31 +1,37 @@
-module.exports = function trackProperty(obj, property, types = ['get', 'set']) {
-  const backingObj = {};
+module.exports = function trackProperty(obj, property, types = ['get', 'set'], callback = () => {}) {
+  let propertyValue = undefined;
   const history = [];
 
   Object.defineProperty(obj, property, {
-    set(value) {
+    set(newValue) {
       if (types.includes('set')) {
-        history.push({
+        const record = {
           type: 'set',
           timestamp: new Date(),
-          previousValue: backingObj[property],
-          newValue: value
-        });
+          previousValue: propertyValue,
+          newValue
+        };
+
+        history.push(record);
+        callback(record);
       }
 
-      backingObj[property] = value;
+      propertyValue = newValue;
     },
 
     get() {
       if (types.includes('get')) {
-        history.push({
+        const record = {
           type: 'get',
           timestamp: new Date(),
-          value: backingObj[property]
-        });
+          value: propertyValue
+        };
+
+        history.push(record);
+        callback(record);
       }
 
-      return backingObj[property];
+      return propertyValue;
     }
   });
 

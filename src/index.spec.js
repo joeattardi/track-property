@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 const { expect } = require('chai');
+const sinon = require('sinon');
 
 const trackProperty = require('./index');
 
@@ -67,6 +68,27 @@ describe('trackProperty', () => {
         previousValue: undefined,
         newValue: 'Joe'
       });
+    });
+  });
+
+  it('should call the callback function if specified', () => {
+    const callback = sinon.spy();
+
+    const obj = {};
+    trackProperty(obj, 'name', ['get', 'set'], callback);
+
+    obj.name = 'Joe';
+    let name = obj.name;
+
+    obj.name = 'Bob';
+    name = obj.name;
+
+    sinon.assert.callCount(callback, 4);
+
+    expectContains(callback.args[0][0], {
+      type: 'set',
+      previousValue: undefined,
+      newValue: 'Joe'
     });
   });
 });
